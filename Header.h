@@ -8,11 +8,11 @@
 
 typedef struct {
 	int number;
-	int state1; //Тут сохраняется индекс состояния, при котором выплоняется команд, в массиве states
-	int symbol1; //Тут сохраняется индекс символа, при котором выплоняется команд, в массиве symbols
-	int symbol2; //Тут сохраняется индекс символа, который нужен записать в ячейку, в массиве symbols
+	int s1; //Тут сохраняется индекс состояния, при котором выплоняется команд, в массиве states
+	int sb1; //Тут сохраняется индекс символа, при котором выплоняется команд, в массиве symbols
+	int sb2; //Тут сохраняется индекс символа, который нужен записать в ячейку, в массиве symbols
 	char dir; //просто направление сдвига головки
-	int state2; //Тут сохраняется индекс состояния, в которое нужно перейти, в массиве states
+	int s2; //Тут сохраняется индекс состояния, в которое нужно перейти, в массиве states
 } command;
 
 typedef struct tapeT tapeT;
@@ -43,4 +43,4 @@ command findCommand(turing* t, char stateCurrent, char symbolCurrent);//нахо
 
 void run(turing* t, bool step, char* nameFile);
 
-void loadDescription(turing* t, char* nameFile); //загрузка описание машины из текстового файла#pragma once
+void loadDes(turing* t, char* nameFile); //загрузка описание машины из текстового файла#pragma once
