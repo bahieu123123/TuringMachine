@@ -74,5 +74,58 @@ void loadTape(turing* t, char* nameFile) {
 }
 
 int main(int argc, char* args[]) {
-	
+	if (argc != 5) {
+		printf("Error: input.txt description.txt command.txt output.txt \n");
+		return -1;
+	}
+	bool ifLoadTape = false;
+	int menuNumb = 0, lastNumb = 4;
+	turing* t = malloc(sizeof(turing));
+	loadDescription(t, args[2]);
+	loadCommand(t, args[3]);
+	while (menuNumb != 4) {
+		menuNumb = menu(lastNumb);
+		switch (menuNumb) {
+		case 1:
+			loadTape(t, args[1]);
+			ifLoadTape = true;
+			break;
+		case 2:
+			if (ifLoadTape == false) {
+				printf("Initial tape wasn't loaded. Load tape, please!\n");
+				break;
+			}
+			run(t, false, args[4]);
+			ifLoadTape = false;
+			break;
+		case 3:
+			if (ifLoadTape == false) {
+				printf("Initial tape wasn't loaded. Load tape, please!\n");
+				break;
+			}
+			run(t, true, args[4]);
+			ifLoadTape = false;
+			break;
+		case 4:
+			break;
+		default:
+			break;
+		}
+	}
+
+	if (t->commands != NULL)
+		free(t->commands);
+	if (ifLoadTape) {
+		while (t->tape->left) {
+			tapeT* tmp;
+			tmp = t->tape;
+			t->tape = t->tape->left;
+			free(tmp);
+		}
+		t->tape = t->tape->left;
+		free(t->tape);
+	}
+	if (t != NULL)
+		free(t);
+	return 0;
 }
