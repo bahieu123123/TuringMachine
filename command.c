@@ -45,25 +45,25 @@ void loadCommand(turing* t, char* nameFile) {
 		fscanf(in, "%c", &state2);
 
 		tran.number = numb;
-		tran.state1 = stateIndex(t, state1);
+		tran.s1 = stateIndex(t, state1);
 
-		if (tran.state1 == -1) {
+		if (tran.s1 == -1) {
 			printf("Error in '%s' file", nameFile);
 			printf("\nIn the command %d, state %c isn't contained in the set of states of your Turing machine", numb,
 				state1);
 			fclose(in);
 			exit(0);
 		}
-		tran.symbol1 = symbolIndex(t, symbol1);
-		if (tran.symbol1 == -1) {
+		tran.sb1 = symbolIndex(t, symbol1);
+		if (tran.sb1 == -1) {
 			printf("\nError in '%s' file", nameFile);
 			printf("\nIn the commnand %d, symbol %c isn't contained in the alphabet of your Turing machine", numb,
 				symbol1);
 			fclose(in);
 			exit(0);
 		}
-		tran.symbol2 = symbolIndex(t, symbol2);
-		if (tran.symbol2 == -1) {
+		tran.sb2 = symbolIndex(t, symbol2);
+		if (tran.sb2 == -1) {
 			printf("\nError in 'command.txt' file");
 			printf("\nIn the commnand %d, symbol %c isn't contained in the alphabet of your Turing machine", numb,
 				symbol2);
@@ -71,8 +71,8 @@ void loadCommand(turing* t, char* nameFile) {
 			exit(0);
 		}
 		tran.dir = dir;
-		tran.state2 = stateIndex(t, state2);
-		if (tran.state2 == -1) {
+		tran.s2 = stateIndex(t, state2);
+		if (tran.s2 == -1) {
 			printf("\nError in '%s' file", nameFile);
 			printf("\nIn the command %d, state %c isn't contained in the set of states of your Turing machine", numb,
 				state2);
