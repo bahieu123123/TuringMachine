@@ -81,7 +81,7 @@ int main(int argc, char* args[]) {
 	bool ifLoadTape = false;
 	int menuNumb = 0, lastNumb = 4;
 	turing* t = malloc(sizeof(turing));
-	loadDescription(t, args[2]);
+	loadDes(t, args[2]);
 	loadCommand(t, args[3]);
 	while (menuNumb != 4) {
 		menuNumb = menu(lastNumb);

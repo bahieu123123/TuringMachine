@@ -1,7 +1,7 @@
 ﻿#include "Header.h"
 
 /*
- * Формат файла Description.txt:
+ * Формат файла description.txt:
   abcS - это множество состояний
   01B - это алфавит
  */
